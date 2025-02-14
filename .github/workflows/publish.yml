@@ -36,11 +36,12 @@ jobs:
       - name: Publish to Modrinth
         uses: cloudnode-pro/modrinth-publish@2.0.0
         with:
+          api-domain: staging-api.modrinth.com
           token: ${{ secrets.MODRINTH_TOKEN }}
-          project: ${{ secrets.MODRINTH_PROJECT_ID }}
+          project: HvRDgHFE
           name: ${{ github.event.release.name }}
           version: ${{ steps.extract_version.outputs.version }}
           changelog: ${{ github.event.release.body }}
           files: target/lift-reloaded-${{ steps.extract_version.outputs.version }}.jar
           loaders: '["bukkit", "paper", "spigot"]'
-          game-versions: '["1.21.x"]'
+          game-versions: '["1.16.x", "1.17.x", "1.18.x", "1.19.x", "1.20.x", "1.21.x"]'
